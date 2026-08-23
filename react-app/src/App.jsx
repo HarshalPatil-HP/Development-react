@@ -1,32 +1,31 @@
 import React, { useState } from 'react';
 
 function App() {
-  // Declare a state variable named 'count' with an initial value of 0
   const [count, setCount] = useState(0);
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px', fontFamily: 'Arial' }}>
-      <h2>Simple Counter App</h2>
-      <p style={{ fontSize: '24px', fontWeight: 'bold' }}>Current Count: {count}</p>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 font-sans">
+      <h2 className="text-3xl font-bold text-gray-800 mb-6">Simple Counter App</h2>
+      <p className="text-2xl font-semibold text-blue-600 mb-8">Current Count: {count}</p>
       
-      <div>
+      <div className="flex gap-4">
         <button 
           onClick={() => setCount(count + 1)}
-          style={{ padding: '10px 20px', margin: '5px', fontSize: '16px', cursor: 'pointer' }}
+          className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors shadow-md cursor-pointer"
         >
           Increment
         </button>
         
         <button 
           onClick={() => setCount(count - 1)}
-          style={{ padding: '10px 20px', margin: '5px', fontSize: '16px', cursor: 'pointer' }}
+          className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-md cursor-pointer"
         >
           Decrement
         </button>
         
         <button 
           onClick={() => setCount(0)}
-          style={{ padding: '10px 20px', margin: '5px', fontSize: '16px', cursor: 'pointer', backgroundColor: '#ffcccc' }}
+          className="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors shadow-md cursor-pointer"
         >
           Reset
         </button>
