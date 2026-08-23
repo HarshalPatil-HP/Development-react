@@ -17,7 +17,12 @@ function App() {
         </button>
         
         <button 
-          onClick={() => setCount(count - 1)}
+          onClick={() => {
+            if(count > 0){
+              setCount(count - 1)
+
+            }
+          }}
           className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-md cursor-pointer"
         >
           Decrement
