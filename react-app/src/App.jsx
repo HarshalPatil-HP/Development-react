@@ -1,42 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0);
+export default function App() {
+
+  let [counter, setCounter] = useState(0);
+
+  let add = () => {
+    if (counter < 20) {
+      setCounter((prev)=>prev + 1);
+      setCounter((prev)=>prev + 1);
+      setCounter((prev)=>prev + 1);
+   
+    }
+  }
+  let remove = () => {
+    if (counter > 0) {
+      setCounter(counter - 1);
+    }
+  }
+  let reset = () => {
+    setCounter(0);
+  }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 font-sans">
-      <h2 className="text-3xl font-bold text-gray-800 mb-6">Simple Counter App</h2>
-      <p className="text-2xl font-semibold text-blue-600 mb-8">Current Count: {count}</p>
-      
-      <div className="flex gap-4">
-        <button 
-          onClick={() => setCount(count + 1)}
-          className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors shadow-md cursor-pointer"
-        >
-          Increment
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 gap-4">
+      <p className="text-2xl font-bold text-gray-800">clicked times: {counter}</p>
+      <div className="flex gap-3">
+        <button onClick={add} className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition">
+          add 3 times {counter}
         </button>
-        
-        <button 
-          onClick={() => {
-            if(count > 0){
-              setCount(count - 1)
-
-            }
-          }}
-          className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-md cursor-pointer"
-        >
-          Decrement
+        <button onClick={remove} className="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow hover:bg-red-700 transition">
+          remove {counter}
         </button>
-        
-        <button 
-          onClick={() => setCount(0)}
-          className="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors shadow-md cursor-pointer"
-        >
-          Reset
+        <button onClick={reset} className="px-4 py-2 bg-gray-600 text-white font-semibold rounded-lg shadow hover:bg-gray-700 transition">
+          reset {counter}
         </button>
       </div>
     </div>
-  );
+  )
 }
-
-export default App;
