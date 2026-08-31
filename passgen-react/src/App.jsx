@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react'
+import { useCallback, useState, useEffect,useRef } from 'react'
 import './App.css'
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
   const [ca, setca] = useState(false);
   const [pass, setpass] = useState('');
   const [length, setlength] = useState(8);
+  const inputRef = useRef(null);
 
   const passGen = useCallback(() => {
     let password = '';
@@ -14,12 +15,20 @@ function App() {
     if (ca) str += "!@#$%^&*-_+=[]{}~`";
 
     for (let i = 0; i < length; i++) {
-      let char = Math.floor(Math.random() * str.length);
+      let char = Math.floor(Math.random() * str.length + 1);
       password += str.charAt(char);
     }
     
     setpass(password);
   }, [na, ca, length]);
+
+  const copyToClipboard = useCallback(() => {
+    if (inputRef.current) {
+      inputRef.current.select();
+      inputRef.current.setSelectionRange(0, 999);
+      window.navigator.clipboard.writeText(inputRef.current.value);
+    }
+  }, [inputRef]);
 
   useEffect(() => {
     passGen();
@@ -37,8 +46,9 @@ function App() {
             className="bg-white text-black outline-none w-full py-1 px-3"
             placeholder="Password"
             readOnly
+            ref={inputRef}
           />
-          <button className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0 hover:bg-blue-800'>
+          <button className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0 hover:bg-blue-800' onClick={copyToClipboard}>
             copy
           </button>
         </div>
