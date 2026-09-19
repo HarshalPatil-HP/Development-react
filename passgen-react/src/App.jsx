@@ -29,7 +29,7 @@ function App() {
       window.navigator.clipboard.writeText(inputRef.current.value);
     }
   }, [inputRef]);
-
+  
   useEffect(() => {
     passGen();
   }, [length, na, ca, passGen]);
